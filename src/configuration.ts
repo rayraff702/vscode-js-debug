@@ -196,6 +196,12 @@ export interface IBaseConfiguration extends IMandatedConfiguration {
    * e.g.: "function (defaultDescription) { return this.toString(); }"
    */
   customDescriptionGenerator?: string;
+
+  /**
+   * Function used to generate the custom properties to show for objects in the debugger
+   * e.g.: "function (defaultDescription) { return {...this, extraProperty: 'otherProperty' } }"
+   */
+  customPropertiesGenerator?: string;
 }
 
 export interface IExtensionHostBaseConfiguration extends INodeBaseConfiguration {
@@ -780,6 +786,7 @@ export const baseDefaults: IBaseConfiguration = {
   __autoExpandGetters: false,
   __breakOnConditionalError: false,
   customDescriptionGenerator: undefined,
+  customPropertiesGenerator: undefined,
 };
 
 const nodeBaseDefaults: INodeBaseConfiguration = {

@@ -188,6 +188,7 @@ export class Thread implements IVariableStoreDelegate {
       this,
       launchConfig.__autoExpandGetters,
       launchConfig.customDescriptionGenerator,
+      launchConfig.customPropertiesGenerator,
     );
     this._smartStepper = new SmartStepper(this.launchConfig, logger);
     this._initialize();
@@ -731,6 +732,7 @@ export class Thread implements IVariableStoreDelegate {
       this,
       this.launchConfig.__autoExpandGetters,
       this.launchConfig.customDescriptionGenerator,
+      this.launchConfig.customPropertiesGenerator,
     );
     scheduledPauseOnAsyncCall = undefined;
 
