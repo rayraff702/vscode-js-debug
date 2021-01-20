@@ -1,26 +1,50 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		{
-			"type": "npm",
-			"script": "watch",
-			"problemMatcher": {
+    {
+      "type": "npm",
+      "script": "watch",
+      "problemMatcher": {
         "base": "$gulp-tsc",
-				"applyTo": "closedDocuments",
-				"background": {
-					"beginsPattern": "Starting",
-					"endsPattern": "Finished"
-				}
-			},
+        "applyTo": "closedDocuments",
+        "background": {
+          "beginsPattern": "Starting",
+          "endsPattern": "Finished"
+        }
+      },
       "isBackground": true,
-      // https://github.com/microsoft/vscode/issues/83016
-			// "presentation": {
-			// 	"reveal": "never"
-			// },
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		}
-	]
+      "group": "build",
+      "label": "npm: watch",
+      "detail": "gulp watch"
+    },
+    {
+      "type": "npm",
+      "script": "compile",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: compile",
+      "detail": "gulp"
+    },
+    {
+      "type": "npm",
+      "script": "compile",
+      "path": "demos/node-ts/",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "npm: compile - demos/node-ts",
+      "detail": "rimraf out && tsc -p ./src && copyfiles 'out/*' out/in/another/location"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "demos/web-worker-ts/",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: build - demos/web-worker-ts",
+      "detail": "./node_modules/.bin/copyfiles -u 1 src/index.html out && npm run compile"
+    }
+  ]
 }
